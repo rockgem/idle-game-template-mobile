@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://resources/data/shops_data/shop_1.tres" type="Resource" id=1]
+[ext_resource path="res://resources/data/shops_data/shop_5.tres" type="Resource" id=2]
+[ext_resource path="res://resources/data/shops_data/shop_3.tres" type="Resource" id=3]
+[ext_resource path="res://resources/data/shops_data/shop_6.tres" type="Resource" id=4]
+[ext_resource path="res://resources/data/shops_data/shop_2.tres" type="Resource" id=5]
+[ext_resource path="res://resources/data/shops_data/shop_4.tres" type="Resource" id=6]
+[ext_resource path="res://actors/ui/ShopCategoryBase.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/ui/StoreDisplay.tscn" type="PackedScene" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="ShopCategoryBase" instance=ExtResource( 7 )]
+
+[node name="StoreDisplay" parent="." index="0" instance=ExtResource( 8 )]
+margin_right = 522.0
+margin_bottom = 124.0
+custom_styles/panel = SubResource( 1 )
+store_data = ExtResource( 1 )
+
+[node name="StoreDisplay2" parent="." index="1" instance=ExtResource( 8 )]
+margin_top = 164.0
+margin_right = 522.0
+margin_bottom = 288.0
+custom_styles/panel = SubResource( 1 )
+store_data = ExtResource( 5 )
+
+[node name="StoreDisplay3" parent="." index="2" instance=ExtResource( 8 )]
+margin_top = 328.0
+margin_right = 522.0
+margin_bottom = 452.0
+custom_styles/panel = SubResource( 1 )
+store_data = ExtResource( 3 )
+
+[node name="StoreDisplay4" parent="." index="3" instance=ExtResource( 8 )]
+margin_top = 492.0
+margin_right = 522.0
+margin_bottom = 616.0
+custom_styles/panel = SubResource( 1 )
+store_data = ExtResource( 6 )
+
+[node name="StoreDisplay5" parent="." index="4" instance=ExtResource( 8 )]
+margin_top = 656.0
+margin_right = 522.0
+margin_bottom = 780.0
+custom_styles/panel = SubResource( 1 )
+store_data = ExtResource( 2 )
+
+[node name="StoreDisplay6" parent="." index="5" instance=ExtResource( 8 )]
+margin_top = 820.0
+margin_right = 522.0
+margin_bottom = 944.0
+custom_styles/panel = SubResource( 1 )
+store_data = ExtResource( 4 )

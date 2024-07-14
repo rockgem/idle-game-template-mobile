@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://resources/data/regions_data/RegionData.gd" type="Script" id=1]
+[ext_resource path="res://resources/data/shops_data/shop_7.tres" type="Resource" id=2]
+[ext_resource path="res://resources/data/shops_data/shop_9.tres" type="Resource" id=3]
+[ext_resource path="res://resources/data/shops_data/shop_8.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+region_shops = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]
+region_unlock_price = 122000
+region_bought = false
