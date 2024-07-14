@@ -1,18 +1,17 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://resources/data/shops_data/ShopData.gd" type="Script" id=1]
-[ext_resource path="res://assets/ui/icons collection .png" type="Texture" id=2]
+[ext_resource path="res://assets/Icon sheet (16x16).png" type="Texture" id=2]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 1610, 540, 100, 150 )
+region = Rect2( 64, 16, 16, 16 )
 
 [resource]
 script = ExtResource( 1 )
 shop_bought = false
 shop_icon = SubResource( 1 )
-shop_name = "Shop 4"
+shop_name = "Axe Shop"
 shop_buy = 50000
 shop_buy_price_mult = 1.4
 shop_produce_time = 10.0

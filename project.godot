@@ -36,8 +36,8 @@ ManagerGame="*res://scripts/globals/ManagerGame.gd"
 
 [display]
 
-window/size/width=720
-window/size/height=1520
+window/size/width=360
+window/size/height=760
 window/size/test_width=540
 window/size/test_height=1140
 window/dpi/allow_hidpi=true
