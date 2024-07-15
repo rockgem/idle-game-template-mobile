@@ -1,0 +1,25 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://resources/styles/new_button_1_disabled.tres" type="StyleBox" id=1]
+[ext_resource path="res://resources/styles/font_main.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/UI assets (1x).png" type="Texture" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 3 )
+region_rect = Rect2( 176, 176, 32, 16 )
+margin_left = 11.0
+margin_right = 11.0
+margin_top = 6.0
+margin_bottom = 6.0
+
+[resource]
+default_font = ExtResource( 2 )
+Button/colors/font_color = Color( 0.964706, 0.964706, 0.964706, 1 )
+Button/colors/font_color_disabled = Color( 0.968627, 0.968627, 0.968627, 1 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/styles/disabled = ExtResource( 1 )
+Button/styles/focus = SubResource( 1 )
+Button/styles/hover = SubResource( 1 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 1 )

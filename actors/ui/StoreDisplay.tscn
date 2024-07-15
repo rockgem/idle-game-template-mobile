@@ -4,6 +4,8 @@
 [ext_resource path="res://assets/ui/icons collection .png" type="Texture" id=2]
 [ext_resource path="res://resources/styles/new_dynamicfont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://resources/styles/Poppins-Medium.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://resources/styles/new_button_1_normal.tres" type="StyleBox" id=5]
+[ext_resource path="res://resources/styles/font_main.tres" type="DynamicFont" id=6]
 [ext_resource path="res://assets/UI assets (1x).png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxEmpty" id=3]
@@ -35,14 +37,6 @@ margin_right = 5.0
 margin_top = 8.0
 margin_bottom = 7.0
 
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 7 )
-region_rect = Rect2( 176, 176, 32, 16 )
-margin_left = 11.0
-margin_right = 11.0
-margin_top = 6.0
-margin_bottom = 6.0
-
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 7 )
 region_rect = Rect2( 144, 176, 32, 16 )
@@ -50,10 +44,6 @@ margin_left = 11.0
 margin_right = 11.0
 margin_top = 6.0
 margin_bottom = 6.0
-
-[sub_resource type="DynamicFont" id=11]
-size = 11
-font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 8
@@ -86,10 +76,10 @@ expand = true
 stretch_mode = 6
 
 [node name="Level" type="Label" parent="."]
-margin_left = 9.0
-margin_top = 48.0
-margin_right = 41.0
-margin_bottom = 71.0
+margin_left = 12.0
+margin_top = 51.0
+margin_right = 38.0
+margin_bottom = 69.0
 custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 2 )
 text = "99"
@@ -124,11 +114,11 @@ margin_right = 132.0
 margin_bottom = 39.0
 focus_mode = 0
 size_flags_horizontal = 3
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/focus = SubResource( 9 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
 custom_styles/disabled = SubResource( 13 )
-custom_styles/normal = SubResource( 9 )
+custom_styles/normal = ExtResource( 5 )
 
 [node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/Buy"]
 unique_name_in_owner = true
@@ -140,7 +130,7 @@ margin_left = -27.5
 margin_top = -11.5
 margin_right = 27.5
 margin_bottom = 11.5
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = ExtResource( 6 )
 text = "Buy"
 align = 1
 valign = 1
@@ -162,9 +152,9 @@ valign = 1
 
 [node name="ShopName" type="Label" parent="."]
 margin_left = 53.0
-margin_top = 9.0
+margin_top = 12.0
 margin_right = 218.0
-margin_bottom = 32.0
+margin_bottom = 30.0
 custom_colors/font_color = Color( 0.909804, 0.909804, 0.909804, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Shop"
@@ -173,9 +163,9 @@ text = "Shop"
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -267.0
-margin_top = 10.0
+margin_top = 13.0
 margin_right = -56.0
-margin_bottom = 33.0
+margin_bottom = 31.0
 custom_colors/font_color = Color( 0.909804, 0.909804, 0.909804, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "$99999"

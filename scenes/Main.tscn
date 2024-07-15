@@ -1,34 +1,19 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/Icon sheet (16x16).png" type="Texture" id=1]
 [ext_resource path="res://assets/UI assets (1x).png" type="Texture" id=2]
 [ext_resource path="res://resources/data/regions_data/region_2.tres" type="Resource" id=3]
 [ext_resource path="res://resources/data/regions_data/region_1.tres" type="Resource" id=4]
 [ext_resource path="res://resources/styles/new_dynamicfont.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/ui/icons collection .png" type="Texture" id=6]
+[ext_resource path="res://resources/styles/Poppins-Medium.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://resources/styles/panel_3.tres" type="StyleBox" id=8]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=9]
+[ext_resource path="res://resources/styles/new_button_1_normal.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/ui/BG.png" type="Texture" id=11]
-[ext_resource path="res://assets/ui/borderCircle.png" type="Texture" id=12]
 [ext_resource path="res://resources/styles/panel_2.tres" type="StyleBox" id=13]
-[ext_resource path="res://assets/ui/closeBtn.png" type="Texture" id=14]
-[ext_resource path="res://assets/ui/roundEdgeRect.png" type="Texture" id=15]
-[ext_resource path="res://assets/ui/greenRectTapped.png" type="Texture" id=17]
-[ext_resource path="res://assets/ui/greyRectNormal.png" type="Texture" id=18]
-[ext_resource path="res://assets/ui/greenRectNormal.png" type="Texture" id=19]
-[ext_resource path="res://assets/ui/yellowRectNormal.png" type="Texture" id=20]
-[ext_resource path="res://assets/ui/yellowRectTapped.png" type="Texture" id=21]
+[ext_resource path="res://resources/shaders/blur.tres" type="Material" id=16]
+[ext_resource path="res://resources/styles/new_button_3_normal.tres" type="StyleBox" id=17]
 [ext_resource path="res://actors/ui/RegionDisplay.tscn" type="PackedScene" id=24]
-
-[sub_resource type="StyleBoxTexture" id=5]
-content_margin_top = 1.0
-content_margin_bottom = 1.0
-texture = ExtResource( 15 )
-region_rect = Rect2( 0, 0, 256, 64 )
-margin_left = 40.0
-margin_right = 36.0
-margin_top = 30.0
-margin_bottom = 34.0
-modulate_color = Color( 1, 0.894118, 0.490196, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -42,16 +27,17 @@ content_margin_top = 16.0
 content_margin_bottom = 16.0
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 2000, 2730, 170, 170 )
+atlas = ExtResource( 1 )
+region = Rect2( 16, 256, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 1590, 2740, 140, 150 )
+atlas = ExtResource( 1 )
+region = Rect2( 32, 256, 16, 16 )
 
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="DynamicFont" id=11]
+font_data = ExtResource( 7 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
@@ -86,6 +72,12 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ManagersControl"]
+material = ExtResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.364706 )
+
 [node name="Panel" type="Panel" parent="CanvasLayer/ManagersControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -95,63 +87,66 @@ margin_right = -21.0
 margin_bottom = -135.0
 custom_styles/panel = ExtResource( 13 )
 
-[node name="Close" type="TextureButton" parent="CanvasLayer/ManagersControl/Panel"]
-self_modulate = Color( 1, 0.415686, 0.415686, 1 )
-anchor_left = 1.0
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/ManagersControl/Panel"]
 anchor_right = 1.0
-margin_left = -59.0
-margin_top = -15.0
-margin_right = 11.0
-margin_bottom = 55.0
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 12 )
-expand = true
-stretch_mode = 5
+margin_left = 39.0
+margin_top = -9.0
+margin_right = -41.0
+margin_bottom = 31.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 48, 64, 48, 32 )
+patch_margin_left = 14
+patch_margin_right = 14
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ManagersControl/Panel/Close"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = 18.0
-margin_right = -18.0
-margin_bottom = -18.0
-texture = ExtResource( 14 )
-expand = true
-
-[node name="Label" type="Label" parent="CanvasLayer/ManagersControl/Panel"]
-anchor_right = 1.0
-margin_left = 43.0
-margin_top = 57.0
-margin_right = -43.0
-margin_bottom = 105.0
-custom_colors/font_color = Color( 0.054902, 0.054902, 0.054902, 1 )
-custom_fonts/font = ExtResource( 5 )
-custom_styles/normal = SubResource( 5 )
+[node name="Label" type="Label" parent="CanvasLayer/ManagersControl/Panel/NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -43.0
+margin_top = -10.0
+margin_right = 43.0
+margin_bottom = 6.0
 text = "Hire Managers"
 align = 1
-valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/ManagersControl/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 27.0
-margin_top = 136.0
+margin_top = 43.0
 margin_right = -27.0
-margin_bottom = -43.0
+margin_bottom = -78.0
 theme = SubResource( 4 )
 
 [node name="ManagersList" type="VBoxContainer" parent="CanvasLayer/ManagersControl/Panel/ScrollContainer"]
 unique_name_in_owner = true
 margin_right = 264.0
 size_flags_horizontal = 3
-custom_constants/separation = 32
+
+[node name="Close" type="Button" parent="CanvasLayer/ManagersControl/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -66.0
+margin_top = -47.0
+margin_right = 66.0
+margin_bottom = -19.0
+custom_styles/normal = ExtResource( 10 )
+text = "Close"
 
 [node name="RegionsControl" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/RegionsControl"]
+material = ExtResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.364706 )
 
 [node name="Panel" type="Panel" parent="CanvasLayer/RegionsControl"]
 anchor_right = 1.0
@@ -162,50 +157,48 @@ margin_right = -24.0
 margin_bottom = -175.0
 custom_styles/panel = ExtResource( 13 )
 
-[node name="Close" type="TextureButton" parent="CanvasLayer/RegionsControl/Panel"]
-self_modulate = Color( 1, 0.415686, 0.415686, 1 )
-anchor_left = 1.0
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/RegionsControl/Panel"]
 anchor_right = 1.0
-margin_left = -59.0
-margin_top = -15.0
-margin_right = 11.0
-margin_bottom = 55.0
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 12 )
-expand = true
-stretch_mode = 5
+margin_left = 39.0
+margin_top = -9.0
+margin_right = -41.0
+margin_bottom = 31.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 48, 64, 48, 32 )
+patch_margin_left = 14
+patch_margin_right = 14
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RegionsControl/Panel/Close"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = 18.0
-margin_right = -18.0
-margin_bottom = -18.0
-texture = ExtResource( 14 )
-expand = true
-
-[node name="Label" type="Label" parent="CanvasLayer/RegionsControl/Panel"]
-anchor_right = 1.0
-margin_left = 43.0
-margin_top = 57.0
-margin_right = -43.0
-margin_bottom = 105.0
-custom_colors/font_color = Color( 0.054902, 0.054902, 0.054902, 1 )
-custom_fonts/font = ExtResource( 5 )
-custom_styles/normal = SubResource( 5 )
+[node name="Label" type="Label" parent="CanvasLayer/RegionsControl/Panel/NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -43.0
+margin_top = -10.0
+margin_right = 43.0
+margin_bottom = 6.0
 text = "Regions"
 align = 1
-valign = 1
+
+[node name="Close" type="Button" parent="CanvasLayer/RegionsControl/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -66.0
+margin_top = -47.0
+margin_right = 66.0
+margin_bottom = -19.0
+custom_styles/normal = ExtResource( 10 )
+text = "Close"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/RegionsControl/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 27.0
-margin_top = 136.0
-margin_right = -17.0
-margin_bottom = -43.0
+margin_left = 5.0
+margin_top = 42.0
+margin_right = -3.0
+margin_bottom = -65.0
 theme = SubResource( 4 )
 custom_styles/bg = SubResource( 6 )
 scroll_horizontal_enabled = false
@@ -214,8 +207,8 @@ scroll_horizontal_enabled = false
 unique_name_in_owner = true
 margin_left = 16.0
 margin_top = 16.0
-margin_right = 288.0
-margin_bottom = 144.0
+margin_right = 204.0
+margin_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_constants/vseparation = 16
@@ -223,8 +216,6 @@ custom_constants/hseparation = 16
 columns = 3
 
 [node name="Panel" parent="CanvasLayer/RegionsControl/Panel/ScrollContainer/RegionsList" instance=ExtResource( 24 )]
-margin_right = 128.0
-margin_bottom = 128.0
 size_flags_horizontal = 3
 region_data = ExtResource( 4 )
 
@@ -232,9 +223,8 @@ region_data = ExtResource( 4 )
 texture = SubResource( 7 )
 
 [node name="RegionDisplay" parent="CanvasLayer/RegionsControl/Panel/ScrollContainer/RegionsList" instance=ExtResource( 24 )]
-margin_left = 144.0
-margin_right = 272.0
-margin_bottom = 128.0
+margin_left = 102.0
+margin_right = 188.0
 region_data = ExtResource( 3 )
 
 [node name="TextureRect" parent="CanvasLayer/RegionsControl/Panel/ScrollContainer/RegionsList/RegionDisplay" index="0"]
@@ -246,46 +236,62 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/OfflineRewardsControl"]
+material = ExtResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.364706 )
+
 [node name="Panel" type="Panel" parent="CanvasLayer/OfflineRewardsControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 38.0
-margin_top = 205.0
-margin_right = -38.0
-margin_bottom = -205.0
-custom_styles/panel = ExtResource( 13 )
+margin_left = 64.0
+margin_top = 284.0
+margin_right = -64.0
+margin_bottom = -284.0
+custom_styles/panel = ExtResource( 8 )
 
-[node name="Close" type="TextureButton" parent="CanvasLayer/OfflineRewardsControl/Panel"]
-self_modulate = Color( 1, 0.415686, 0.415686, 1 )
-anchor_left = 1.0
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/OfflineRewardsControl/Panel"]
 anchor_right = 1.0
-margin_left = -59.0
-margin_top = -15.0
-margin_right = 11.0
-margin_bottom = 55.0
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 12 )
-expand = true
-stretch_mode = 5
+margin_left = 39.0
+margin_top = -9.0
+margin_right = -41.0
+margin_bottom = 31.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 96, 64, 48, 32 )
+patch_margin_left = 14
+patch_margin_right = 14
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/OfflineRewardsControl/Panel/Close"]
-anchor_right = 1.0
+[node name="Label" type="Label" parent="CanvasLayer/OfflineRewardsControl/Panel/NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -43.0
+margin_top = -10.0
+margin_right = 43.0
+margin_bottom = 6.0
+text = "Offline Reward"
+
+[node name="Close" type="Button" parent="CanvasLayer/OfflineRewardsControl/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = 18.0
-margin_right = -18.0
-margin_bottom = -18.0
-texture = ExtResource( 14 )
-expand = true
+margin_left = -66.0
+margin_top = -47.0
+margin_right = 66.0
+margin_bottom = -19.0
+custom_styles/normal = ExtResource( 10 )
+text = "Great!"
 
 [node name="Label" type="Label" parent="CanvasLayer/OfflineRewardsControl/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 25.0
-margin_top = 67.0
+margin_top = 45.0
 margin_right = -25.0
-margin_bottom = -41.0
+margin_bottom = -109.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "dsfsdf"
@@ -299,6 +305,12 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UpgradesControl"]
+material = ExtResource( 16 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.364706 )
+
 [node name="Panel" type="Panel" parent="CanvasLayer/UpgradesControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -308,50 +320,36 @@ margin_right = -33.0
 margin_bottom = -137.0
 custom_styles/panel = ExtResource( 13 )
 
-[node name="Label" type="Label" parent="CanvasLayer/UpgradesControl/Panel"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UpgradesControl/Panel"]
 anchor_right = 1.0
-margin_left = 43.0
-margin_top = 57.0
-margin_right = -43.0
-margin_bottom = 105.0
-custom_colors/font_color = Color( 0.054902, 0.054902, 0.054902, 1 )
-custom_fonts/font = ExtResource( 5 )
-custom_styles/normal = SubResource( 5 )
+margin_left = 39.0
+margin_top = -9.0
+margin_right = -41.0
+margin_bottom = 31.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 48, 64, 48, 32 )
+patch_margin_left = 14
+patch_margin_right = 14
+
+[node name="Label" type="Label" parent="CanvasLayer/UpgradesControl/Panel/NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -43.0
+margin_top = -10.0
+margin_right = 43.0
+margin_bottom = 6.0
 text = "Upgrades"
 align = 1
-valign = 1
-
-[node name="Close" type="TextureButton" parent="CanvasLayer/UpgradesControl/Panel"]
-self_modulate = Color( 1, 0.415686, 0.415686, 1 )
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -59.0
-margin_top = -15.0
-margin_right = 11.0
-margin_bottom = 55.0
-texture_normal = ExtResource( 12 )
-texture_pressed = ExtResource( 12 )
-texture_hover = ExtResource( 12 )
-expand = true
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UpgradesControl/Panel/Close"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 18.0
-margin_top = 18.0
-margin_right = -18.0
-margin_bottom = -18.0
-texture = ExtResource( 14 )
-expand = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/UpgradesControl/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 27.0
-margin_top = 136.0
+margin_top = 49.0
 margin_right = -27.0
-margin_bottom = -43.0
+margin_bottom = -60.0
 theme = SubResource( 4 )
 
 [node name="UpgradesList" type="VBoxContainer" parent="CanvasLayer/UpgradesControl/Panel/ScrollContainer"]
@@ -360,6 +358,18 @@ margin_right = 240.0
 size_flags_horizontal = 3
 custom_constants/separation = 16
 
+[node name="Close" type="Button" parent="CanvasLayer/UpgradesControl/Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -66.0
+margin_top = -47.0
+margin_right = 66.0
+margin_bottom = -19.0
+custom_styles/normal = ExtResource( 10 )
+text = "Close"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -367,6 +377,7 @@ margin_left = 9.0
 margin_top = 13.0
 margin_right = -9.0
 margin_bottom = -19.0
+size_flags_vertical = 3
 
 [node name="HUD" type="Panel" parent="VBoxContainer"]
 margin_right = 342.0
@@ -390,7 +401,7 @@ margin_right = 160.0
 margin_bottom = 25.0
 size_flags_horizontal = 3
 custom_colors/font_color = Color( 0.933333, 0.933333, 0.933333, 1 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = SubResource( 11 )
 text = "$456456464"
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HUD/HBoxContainer/Gold"]
@@ -406,7 +417,7 @@ stretch_mode = 6
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 margin_top = 48.0
 margin_right = 342.0
-margin_bottom = 660.0
+margin_bottom = 693.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 4 )
@@ -423,64 +434,45 @@ size_flags_horizontal = 3
 custom_constants/separation = 104
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 664.0
+margin_top = 697.0
 margin_right = 342.0
 margin_bottom = 728.0
 size_flags_horizontal = 3
 
-[node name="Managers" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="Managers" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_right = 111.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 0, 64 )
+margin_bottom = 31.0
 size_flags_horizontal = 3
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 17 )
-texture_disabled = ExtResource( 18 )
-expand = true
-
-[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/Managers"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = ExtResource( 17 )
+custom_styles/pressed = ExtResource( 17 )
+custom_styles/focus = ExtResource( 17 )
+custom_styles/disabled = ExtResource( 17 )
+custom_styles/normal = ExtResource( 17 )
 text = "Managers"
-align = 1
-valign = 1
 
-[node name="Upgrades" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="Upgrades" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 115.0
 margin_right = 226.0
-margin_bottom = 64.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
-texture_normal = ExtResource( 19 )
-texture_pressed = ExtResource( 17 )
-texture_disabled = ExtResource( 18 )
-expand = true
-
-[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/Upgrades"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = ExtResource( 17 )
+custom_styles/pressed = ExtResource( 17 )
+custom_styles/focus = ExtResource( 17 )
+custom_styles/disabled = ExtResource( 17 )
+custom_styles/normal = ExtResource( 17 )
 text = "Upgrades"
-align = 1
-valign = 1
 
-[node name="Regions" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="Regions" type="Button" parent="VBoxContainer/HBoxContainer"]
 margin_left = 230.0
 margin_right = 342.0
-margin_bottom = 64.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 21 )
-texture_disabled = ExtResource( 18 )
-expand = true
-
-[node name="PriceLabel" type="Label" parent="VBoxContainer/HBoxContainer/Regions"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = ExtResource( 17 )
+custom_styles/pressed = ExtResource( 17 )
+custom_styles/focus = ExtResource( 17 )
+custom_styles/disabled = ExtResource( 17 )
+custom_styles/normal = ExtResource( 17 )
 text = "Regions"
-align = 1
-valign = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -500,9 +492,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -27.5
-margin_top = -8.0
+margin_top = -11.0
 margin_right = 27.5
-margin_bottom = 6.0
+margin_bottom = 5.0
 text = "Region 1"
 
 [node name="Timer" type="Timer" parent="."]

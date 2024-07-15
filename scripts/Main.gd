@@ -36,12 +36,16 @@ func _ready():
 	get_node('%Gold').text = '$ ' + ManagerGame.int_to_currency(ManagerGame.player_data.player_gold)
 
 
+func _physics_process(delta):
+	get_node('%Gold').text = '$ ' + ManagerGame.int_to_currency(ManagerGame.player_data.player_gold)
+
+
 func _gui_input(event):
 	pass
 
 
 func on_gold_changed():
-	get_node('%Gold').text = '$ ' + ManagerGame.int_to_currency(ManagerGame.player_data.player_gold)
+	pass
 
 
 func on_game_loaded():
@@ -134,6 +138,6 @@ func _on_Upgrades_pressed():
 		display.is_display_for_upgrade = true
 		get_node('%UpgradesList').add_child(display)
 		display.get_node('VBoxContainer/Label').text = 'Income x3'
-		display.get_node('%PriceLabel').text = '$' + ManagerGame.int_to_currency(display.shop_data.upgrade_cost)
+		display.get_node('%Buy').text = '$' + ManagerGame.int_to_currency(display.shop_data.upgrade_cost)
 	
 	get_node('%UpgradesControl').show()

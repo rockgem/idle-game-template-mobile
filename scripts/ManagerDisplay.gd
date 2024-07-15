@@ -7,16 +7,17 @@ var is_display_for_upgrade: bool = false
 
 
 func _ready():
-	$VBoxContainer/Buy/PriceLabel.text = '$' + ManagerGame.int_to_currency(shop_data.shop_manager_price)
+	$VBoxContainer/Buy.text = '$' + ManagerGame.int_to_currency(shop_data.shop_manager_price)
 	$VBoxContainer/Label.text = 'Auto collects ' + shop_data.shop_name
 	$TextureRect.texture = shop_data.shop_icon
 	
 	if is_display_for_upgrade == false:
 		if shop_data.shop_manager_enabled:
-			set('modulate', Color.slategray)
+#			set('modulate', Color.slategray)
 			$VBoxContainer/Buy.disabled = true
 		else:
-			set('modulate', Color.white)
+			pass
+#			set('modulate', Color.white)
 		
 		return
 	
