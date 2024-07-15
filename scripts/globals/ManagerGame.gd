@@ -12,6 +12,8 @@ signal game_loaded_offline_profit
 
 signal region_clicked
 
+signal pop_to_ui(instance)
+
 
 const SAVE_PATH = 'user://savedata.tres'
 

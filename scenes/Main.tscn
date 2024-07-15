@@ -1,15 +1,17 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/Icon sheet (16x16).png" type="Texture" id=1]
 [ext_resource path="res://assets/UI assets (1x).png" type="Texture" id=2]
 [ext_resource path="res://resources/data/regions_data/region_2.tres" type="Resource" id=3]
 [ext_resource path="res://resources/data/regions_data/region_1.tres" type="Resource" id=4]
 [ext_resource path="res://resources/styles/new_dynamicfont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://actors/components/EventsController.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/styles/Poppins-Medium.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://resources/styles/panel_3.tres" type="StyleBox" id=8]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=9]
 [ext_resource path="res://resources/styles/new_button_1_normal.tres" type="StyleBox" id=10]
 [ext_resource path="res://assets/ui/BG.png" type="Texture" id=11]
+[ext_resource path="res://scenes/Popups.gd" type="Script" id=12]
 [ext_resource path="res://resources/styles/panel_2.tres" type="StyleBox" id=13]
 [ext_resource path="res://resources/shaders/blur.tres" type="Material" id=16]
 [ext_resource path="res://resources/styles/new_button_3_normal.tres" type="StyleBox" id=17]
@@ -62,6 +64,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 11 )
 expand = true
+
+[node name="Popups" type="CanvasLayer" parent="."]
+layer = 100
+script = ExtResource( 12 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 10
@@ -500,6 +506,8 @@ text = "Region 1"
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="EventsController" parent="." instance=ExtResource( 6 )]
 
 [connection signal="pressed" from="CanvasLayer/ManagersControl/Panel/Close" to="." method="_on_Close_pressed"]
 [connection signal="pressed" from="CanvasLayer/RegionsControl/Panel/Close" to="." method="_on_Close_pressed"]
