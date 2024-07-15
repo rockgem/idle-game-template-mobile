@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/ui/popup/EventView.gd" type="Script" id=1]
 [ext_resource path="res://resources/styles/panel_4.tres" type="StyleBox" id=2]
 [ext_resource path="res://resources/shaders/blur.tres" type="Material" id=3]
 [ext_resource path="res://resources/styles/new_button_3_normal.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/UI assets (1x).png" type="Texture" id=5]
+[ext_resource path="res://assets/Icon sheet (16x16).png" type="Texture" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 432, 16, 16 )
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="EventView" type="Control"]
 anchor_right = 1.0
@@ -16,6 +24,21 @@ material = ExtResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.364706 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 172, 215 )
+amount = 13
+lifetime = 3.0
+preprocess = 10.0
+texture = SubResource( 1 )
+direction = Vector2( 0, -1 )
+spread = 59.06
+gravity = Vector2( 0, 20 )
+initial_velocity = 48.29
+initial_velocity_random = 0.52
+scale_amount = 2.0
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
