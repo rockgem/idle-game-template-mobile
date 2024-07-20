@@ -6,7 +6,8 @@ signal event_started
 enum EVENT_TYPE{
 	SINGLE_BONUS,
 	BOOST,
-	UPGRADE
+	UPGRADE,
+	DEDUCT
 }
 
 var events = [
@@ -17,9 +18,14 @@ var events = [
 	"A famous princess has visited the kingdom and has boosted the sales!",
 	"A a well-known king has visited the kingdom and caused a huge flock of townsfolk to flood the gates. It increased our total sales.",
 ]
+var events_negative = [
+	"The king has announced huge tax upon businesses in the kingdom, we have lost most of the sales.",
+	"Huge tax cut incoming...",
+	"A burglar has entered one of our stores and took away large amount of assets.",
+]
 
 var event_time_start_min = 45
-var event_time_start_max = 200
+var event_time_start_max = 100
 
 
 var event_data = {
@@ -33,7 +39,7 @@ func _ready():
 
 
 func create_event():
-	var rand =  0
+	var rand =  randi() % 3
 	var bonus_min = 0.1
 	var bonus_max = 0.4
 	
@@ -46,6 +52,10 @@ func create_event():
 			new_data['reward'] = ManagerGame.player_data['player_gold'] * rand_range(bonus_min, bonus_max)
 		1: pass
 		2: pass
+		3:
+			events_negative.shuffle()
+			new_data['event_message'] = events_negative[0]
+			new_data['reward'] -= ManagerGame.player_data['player_gold'] * rand_range(bonus_min, bonus_max)
 	
 	var i = load("res://actors/ui/popup/EventView.tscn").instance()
 	i.data = new_data

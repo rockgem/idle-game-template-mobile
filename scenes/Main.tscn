@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Icon sheet (16x16).png" type="Texture" id=1]
 [ext_resource path="res://assets/UI assets (1x).png" type="Texture" id=2]
@@ -16,6 +16,10 @@
 [ext_resource path="res://resources/shaders/blur.tres" type="Material" id=16]
 [ext_resource path="res://resources/styles/new_button_3_normal.tres" type="StyleBox" id=17]
 [ext_resource path="res://actors/ui/RegionDisplay.tscn" type="PackedScene" id=24]
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 432, 16, 16 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -64,6 +68,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 11 )
 expand = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 177, -19 )
+amount = 10
+lifetime = 15.0
+preprocess = 20.0
+texture = SubResource( 12 )
+emission_shape = 2
+emission_rect_extents = Vector2( 200, 1 )
+direction = Vector2( 0, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+scale_amount = 3.0
+scale_amount_random = 1.0
 
 [node name="Popups" type="CanvasLayer" parent="."]
 layer = 100

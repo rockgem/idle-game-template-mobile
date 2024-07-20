@@ -15,7 +15,7 @@ signal region_clicked
 signal pop_to_ui(instance)
 
 
-const SAVE_PATH = 'user://savedata.tres'
+const SAVE_PATH = 'user://save.tres'
 
 
 
@@ -53,7 +53,7 @@ func load_game():
 				var mult = difference / shop.shop_produce_time
 				total_profit += shop.shop_produce * mult
 	
-	total_profit = int(total_profit)
+	total_profit = int(total_profit / 2)
 	
 	player_data.current_unix_time = Time.get_unix_time_from_system()
 	if total_profit > 0:
