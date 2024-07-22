@@ -15,12 +15,12 @@ signal region_clicked
 signal pop_to_ui(instance)
 
 
-const SAVE_PATH = 'user://save.tres'
+const SAVE_PATH = 'user://save_data_v3.tres'
 
 
 
 
-var player_data
+var player_data: PlayerData
 
 
 
@@ -81,6 +81,7 @@ func save_game(shop_data = [], regions_arr = []):
 				shops_arr.append(shop)
 			
 			temp_arr.append(shops_arr)
+			player_data.player_regs.append(region)
 		
 		player_data.player_regions = temp_arr
 #		player_data.player_regions = temp_arr.duplicate(true) 
@@ -109,7 +110,7 @@ func int_to_currency(amount) -> String:
 
 func int_to_currency_prefix(amount: int):
 	if amount <= 0:
-		return
+		return '0'
 	
 	var string = str(amount)
 	var mod = string.length() % 3

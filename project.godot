@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "PlayerData",
+"language": "GDScript",
+"path": "res://resources/PlayerData.gd"
+}, {
+"base": "Resource",
 "class": "RegionData",
 "language": "GDScript",
 "path": "res://resources/data/regions_data/RegionData.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://resources/data/shops_data/ShopData.gd"
 } ]
 _global_script_class_icons={
+"PlayerData": "",
 "RegionData": "",
 "ShopData": ""
 }

@@ -1,12 +1,19 @@
-[gd_resource type="Resource" load_steps=5 format=2]
+[gd_resource type="Resource" load_steps=7 format=2]
 
 [ext_resource path="res://resources/data/regions_data/RegionData.gd" type="Script" id=1]
 [ext_resource path="res://resources/data/shops_data/shop_7.tres" type="Resource" id=2]
 [ext_resource path="res://resources/data/shops_data/shop_9.tres" type="Resource" id=3]
 [ext_resource path="res://resources/data/shops_data/shop_8.tres" type="Resource" id=4]
+[ext_resource path="res://assets/Icon sheet (16x16).png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 256, 16, 16 )
 
 [resource]
 script = ExtResource( 1 )
 region_shops = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ]
 region_unlock_price = 122000
 region_bought = false
+icon = SubResource( 7 )
+region_name = "Region 2"

@@ -26,6 +26,7 @@ func _ready():
 			
 			ManagerGame.player_data.player_regions.append(new_arr)
 			ManagerGame.player_data.player_regs_atts.append(g)
+			ManagerGame.player_data.player_regs.append(region_data)
 		
 		on_game_loaded()
 #		ManagerGame.emit_signal("call_save_game")
@@ -34,6 +35,10 @@ func _ready():
 	on_call_save_game()
 	
 	get_node('%Gold').text = '$ ' + ManagerGame.int_to_currency(ManagerGame.player_data.player_gold)
+	
+	if ManagerGame.player_data.first_time_play:
+		var i = load("res://actors/ui/popup/RegionSelection.tscn").instance()
+		ManagerGame.emit_signal("pop_to_ui", i)
 
 
 func _physics_process(delta):
@@ -51,29 +56,38 @@ func on_gold_changed():
 func on_game_loaded():
 	var count = 0
 	
-	var region_data: RegionData = RegionData.new()
+	for child in get_node('%ShopCategoryBase').get_children():
+		child.queue_free()
+	
+#	var region_data: RegionData = RegionData.new()
 	for region in get_node('%RegionsList').get_children():
-		var new_region_data: RegionData = region_data.duplicate()
-		new_region_data.region_bought = ManagerGame.player_data.player_regs_atts[count]
+#		var new_region_data: RegionData = region_data.duplicate()
+		region.region_data.region_bought = ManagerGame.player_data.player_regs_atts[count]
+		
+		region.region_data.region_shops.clear()
 		
 		var arr = ManagerGame.player_data.player_regions[count]
 		for shop in arr:
-			new_region_data.region_shops.append(shop)
+			region.region_data.region_shops.append(shop)
 		
-		region.region_data = new_region_data
+#		region.region_data = new_region_data
 		region._ready()
 		count += 1
 	
-	for shop in get_node('%RegionsList').get_child(0).region_data.region_shops:
-		var store_display = load("res://actors/ui/StoreDisplay.tscn").instance()
-		store_display.store_data = shop
-		
-		get_node('%ShopCategoryBase').add_child(store_display)
-	
-	for child in get_node('%ShopCategoryBase').get_children():
-		var manager_display = load("res://actors/ui/ManagerDisplay.tscn").instance()
-		manager_display.shop_data = child.store_data
-		get_node('%ManagersList').add_child(manager_display)
+	for region in get_node('%RegionsList').get_children():
+		if region.region_data.region_bought:
+			for shop in region.region_data.region_shops:
+				var store_display = load("res://actors/ui/StoreDisplay.tscn").instance()
+				store_display.store_data = shop
+				
+				get_node('%ShopCategoryBase').add_child(store_display)
+			
+			for child in get_node('%ShopCategoryBase').get_children():
+				var manager_display = load("res://actors/ui/ManagerDisplay.tscn").instance()
+				manager_display.shop_data = child.store_data
+				get_node('%ManagersList').add_child(manager_display)
+			
+			break
 
 
 func on_call_save_game():
@@ -90,6 +104,8 @@ func on_call_save_game():
 
 
 func on_region_clicked(region_data: RegionData):
+	get_node('%Region').text = region_data.region_name
+	
 	for child in get_node('%ShopCategoryBase').get_children():
 		child.queue_free()
 	
@@ -125,6 +141,11 @@ func _on_Close_pressed():
 
 
 func _on_Regions_pressed():
+	for region in get_node('%RegionsList').get_children():
+		region.region_data.region_unlock_price = ManagerGame.player_data.cumulative_region_price
+		
+		region._ready()
+	
 	get_node('%RegionsControl').show()
 
 
