@@ -58,6 +58,8 @@ func on_game_loaded():
 	
 	for child in get_node('%ShopCategoryBase').get_children():
 		child.queue_free()
+	for child in get_node('%ManagersList').get_children():
+		child.queue_free()
 	
 #	var region_data: RegionData = RegionData.new()
 	for region in get_node('%RegionsList').get_children():
