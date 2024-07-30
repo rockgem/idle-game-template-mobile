@@ -4,6 +4,7 @@ extends Node
 
 
 signal gold_changed
+signal manager_bought
 
 signal game_loaded
 signal game_saved
@@ -15,7 +16,7 @@ signal region_clicked
 signal pop_to_ui(instance)
 
 
-const SAVE_PATH = 'user://save_data_v3.tres'
+const SAVE_PATH = 'user://save_data_v3.1.tres'
 
 
 

@@ -139,7 +139,6 @@ theme = SubResource( 4 )
 
 [node name="ManagersList" type="VBoxContainer" parent="CanvasLayer/ManagersControl/Panel/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 264.0
 size_flags_horizontal = 3
 
 [node name="Close" type="Button" parent="CanvasLayer/ManagersControl/Panel"]
@@ -368,7 +367,6 @@ theme = SubResource( 4 )
 
 [node name="UpgradesList" type="VBoxContainer" parent="CanvasLayer/UpgradesControl/Panel/ScrollContainer"]
 unique_name_in_owner = true
-margin_right = 240.0
 size_flags_horizontal = 3
 custom_constants/separation = 16
 

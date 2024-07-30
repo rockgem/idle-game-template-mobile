@@ -14,6 +14,8 @@ var current_time_countup: float = 0.0
 
 
 func _ready():
+	ManagerGame.connect("manager_bought", self, 'on_manager_bought')
+	
 	if store_data != null:
 		$TextureRect.texture = store_data.shop_icon
 		$Level.text = str(store_data.shop_level)
@@ -87,3 +89,8 @@ func _on_Time_gui_input(event):
 			set_physics_process(true)
 			ManagerGame.player_data.player_gold += store_data.shop_produce * store_data.upgrade_multiplier
 			ManagerGame.emit_signal("gold_changed")
+
+
+func on_manager_bought():
+	if store_data.shop_manager_enabled:
+		set_physics_process(true)

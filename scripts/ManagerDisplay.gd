@@ -41,3 +41,5 @@ func _on_Buy_pressed():
 		ManagerGame.player_data.player_gold -= shop_data.shop_manager_price
 		shop_data.shop_manager_enabled = true
 		set('modulate', Color.slategray)
+		
+		ManagerGame.emit_signal("manager_bought")
