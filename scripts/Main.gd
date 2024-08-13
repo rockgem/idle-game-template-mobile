@@ -110,12 +110,20 @@ func on_region_clicked(region_data: RegionData):
 	
 	for child in get_node('%ShopCategoryBase').get_children():
 		child.queue_free()
-	
+	for child in get_node('%ManagersList').get_children():
+		child.queue_free()
+
 	for shop in region_data.region_shops:
 		var store_display = load("res://actors/ui/StoreDisplay.tscn").instance()
 		store_display.store_data = shop
 		
 		get_node('%ShopCategoryBase').add_child(store_display)
+
+	for shop in region_data.region_shops:
+		var manager_display = load("res://actors/ui/ManagerDisplay.tscn").instance()
+		manager_display.shop_data = shop
+
+		get_node('%ManagersList').add_child(manager_display)
 
 
 func on_game_loaded_offline_profit(total_profit):

@@ -9,7 +9,4 @@ func _ready():
 
 
 func on_pop_to_ui(instance):
-	for child in get_children():
-		child.queue_free()
-	
 	add_child(instance)

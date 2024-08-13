@@ -36,6 +36,7 @@ func _on_Buy_pressed():
 			shop_data.upgraded = true
 			shop_data.upgrade_multiplier = 3
 			set('modulate', Color.slategray)
+			$VBoxContainer/Buy.disabled = true
 		return
 	if ManagerGame.player_data.player_gold >= shop_data.shop_manager_price:
 		ManagerGame.player_data.player_gold -= shop_data.shop_manager_price
@@ -43,3 +44,4 @@ func _on_Buy_pressed():
 		set('modulate', Color.slategray)
 		
 		ManagerGame.emit_signal("manager_bought")
+		$VBoxContainer/Buy.disabled = true

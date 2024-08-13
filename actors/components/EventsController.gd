@@ -5,8 +5,6 @@ signal event_started
 
 enum EVENT_TYPE{
 	SINGLE_BONUS,
-	BOOST,
-	UPGRADE,
 	DEDUCT
 }
 
@@ -39,7 +37,7 @@ func _ready():
 
 
 func create_event():
-	var rand =  randi() % 3
+	var rand =  randi() % 2
 	var bonus_min = 0.1
 	var bonus_max = 0.4
 	
@@ -50,9 +48,7 @@ func create_event():
 			events.shuffle()
 			new_data['event_message'] = events[0]
 			new_data['reward'] = ManagerGame.player_data['player_gold'] * rand_range(bonus_min, bonus_max)
-		1: pass
-		2: pass
-		3:
+		1:
 			events_negative.shuffle()
 			new_data['event_message'] = events_negative[0]
 			new_data['reward'] -= ManagerGame.player_data['player_gold'] * rand_range(bonus_min, bonus_max)
